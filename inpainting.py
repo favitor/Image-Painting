@@ -21,7 +21,7 @@ FLAGS, unparsed = parser.parse_known_args()
 #Or you can use de command below instead argparse
 img = cv2.imread(FLAGS.image)
 #img = cv2.imread('yourimage.jpg')
-mask = cv2.imread(FLAGS.mask)
+mask = cv2.imread(FLAGS.mask, 0)
 #mask = cv2.imread('yourmask.jpg', 0)
 
 #cv2.INPAINT_NS
