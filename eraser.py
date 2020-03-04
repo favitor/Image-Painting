@@ -1,22 +1,34 @@
 import cv2
+import sys
+import argparse
 
-screen = "Drawing"
-img = cv2.imread("base.jpg")
-cv2.namedWindow(screen)
+FLAGS = None
+IMG = 'image'
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-i', '--image',
+        type=str,
+        help='Path to the image.')
+
+FLAGS, unparsed = parser.parse_known_args()
+
+#Or you can use de command below instead argparse
+#img = cv2.imread("base.jpg")
+img = cv2.imread(FLAGS.image)
+cv2.namedWindow('Eraser')
 eraser = False 
 radius = 5
 
 def draw_circle(x,y):
-        # 'erase' circle
         cv2.circle(img, ( x, y), radius, (255, 255, 255), -1)
-        cv2.imshow(screen,img)
+        cv2.imshow('Eraser', img)
 
-def handleMouseEvent(event,x,y,flags,param):
+def handleMouseEvent(event, x, y, flags, param):
       global eraser , radius     
       if (event == cv2.EVENT_MOUSEMOVE):
               # update eraser position
             if eraser==True:
-                  draw_circle(x,y)
+                  draw_circle(x, y)
 
       elif event == cv2.EVENT_LBUTTONUP:
               # stop erasing
@@ -24,10 +36,10 @@ def handleMouseEvent(event,x,y,flags,param):
       elif (event == cv2.EVENT_LBUTTONDOWN):
               # start erasing
             eraser = True
-            draw_circle(x,y)
+            draw_circle(x, y)
 
-cv2.setMouseCallback(screen,handleMouseEvent)
-cv2.imshow(screen,img)
+cv2.setMouseCallback('Eraser', handleMouseEvent)
+cv2.imshow('Eraser', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 mask = cv2.imwrite('mask.jpg', img)
