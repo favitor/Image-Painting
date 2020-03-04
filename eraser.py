@@ -4,7 +4,7 @@ screen = "Drawing"
 img = cv2.imread("base.jpg")
 cv2.namedWindow(screen)
 eraser = False 
-radius = 20
+radius = 5
 
 def draw_circle(x,y):
         # 'erase' circle
@@ -17,14 +17,7 @@ def handleMouseEvent(event,x,y,flags,param):
               # update eraser position
             if eraser==True:
                   draw_circle(x,y)
-      elif (event == cv2.EVENT_MOUSEWHEEL):
-              # change eraser radius
-            if flags > 0:
-                radius +=   5
-            else:
-                    # prevent issues with < 0
-                if radius > 10:
-                    radius -=   5
+
       elif event == cv2.EVENT_LBUTTONUP:
               # stop erasing
             eraser = False
@@ -33,9 +26,8 @@ def handleMouseEvent(event,x,y,flags,param):
             eraser = True
             draw_circle(x,y)
 
-
 cv2.setMouseCallback(screen,handleMouseEvent)
-# show initial image
 cv2.imshow(screen,img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+mask = cv2.imwrite('mask.jpg', img)
