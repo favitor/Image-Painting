@@ -1,32 +1,32 @@
 import cv2
-import numpy as np 
+import numpy as np
+import sys
+import argparse
 
-drawing = False # true if mouse is pressed
-pt1_x , pt1_y = None , None
+FLAGS = None
+IMG = 'image'
+MSK = 'mask'
 
-# mouse callback function
-def line_drawing(event,x,y,flags,param):
-    global pt1_x,pt1_y,drawing
+parser = argparse.ArgumentParser()
+parser.add_argument('-i', '--image',
+        type=str,
+        help='Path to the image.')
 
-    if event==cv2.EVENT_LBUTTONDOWN:
-        drawing=True
-        pt1_x,pt1_y=x,y
+parser.add_argument('-m', '--mask',
+        type=str,
+        help='Path to the mask.')
 
-    elif event==cv2.EVENT_MOUSEMOVE:
-        if drawing==True:
-            cv2.line(img,(pt1_x,pt1_y),(x,y),color=(255,255,255),thickness=3)
-            pt1_x,pt1_y=x,y
-    elif event==cv2.EVENT_LBUTTONUP:
-        drawing=False
-        cv2.line(img,(pt1_x,pt1_y),(x,y),color=(255,255,255),thickness=3)        
+FLAGS, unparsed = parser.parse_known_args()
 
+#Or you can use de command below instead argparse
+img = cv2.imread(FLAGS.image)
+#img = cv2.imread('yourimage.jpg')
+mask = cv2.imread(FLAGS.mask)
+#mask = cv2.imread('yourmask.jpg', 0)
 
-img = np.zeros((512,512,3), np.uint8)
-cv2.namedWindow('Draw')
-cv2.setMouseCallback('Draw',line_drawing)
+#cv2.INPAINT_NS
+final_img = cv2.inpaint(img, mask, 3, cv2.INPAINT_TELEA)
 
-while(1):
-    cv2.imshow('Draw',img)
-    if cv2.waitKey(1) & 0xFF == 27:
-        break
+cv2.imshow('Final Image', final_img)
+cv2.waitKey(0)
 cv2.destroyAllWindows()
