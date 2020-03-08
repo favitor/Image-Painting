@@ -1,4 +1,6 @@
 # Image-Painting
-----Workin on----
+---Workin on---
 
 A simple tool that use image inpainting for end-users
+
+---Not Work Yet---
