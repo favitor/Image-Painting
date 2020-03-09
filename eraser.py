@@ -1,3 +1,5 @@
+#Author Vitor Araujo
+
 import cv2
 import sys
 import argparse
@@ -35,11 +37,10 @@ def handleMouseEvent(event, x, y, flags, param):
                   draw_circle(x, y)
 
       elif (event==cv2.EVENT_MOUSEWHEEL):
-              # change eraser radius
+              # change eraser size
             if flags > 0:
                 radius +=   5
             else:
-                    # prevent issues with < 0
                 if radius > 10:
                     radius -=   5
 

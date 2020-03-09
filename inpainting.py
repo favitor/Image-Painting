@@ -1,3 +1,5 @@
+#Author Vitor Araujo
+
 import cv2
 import numpy as np
 import sys
@@ -20,11 +22,11 @@ FLAGS, unparsed = parser.parse_known_args()
 
 #Or you can use de command below instead argparse
 img = cv2.imread(FLAGS.image)
-#img = cv2.imread('yourimage.jpg')
+#img = cv2.imread('image.jpg')
 mask = cv2.imread(FLAGS.mask, 0)
-#mask = cv2.imread('yourmask.jpg', 0)
+#mask = cv2.imread('mask.jpg', 0)
 
-#cv2.INPAINT_NS
+##You use cv2.INPAINT_NS in the last argument
 final_img = cv2.inpaint(img, mask, 3, cv2.INPAINT_TELEA)
 
 cv2.imshow('Final Image', final_img)
