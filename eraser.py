@@ -1,6 +1,7 @@
 import cv2
 import sys
 import argparse
+import numpy as np
 
 FLAGS = None
 IMG = 'image'
@@ -18,9 +19,12 @@ img = cv2.imread(FLAGS.image)
 cv2.namedWindow('Eraser')
 eraser = False 
 radius = 5
+height, width = img.shape[:2]
+bg = np.zeros((height, width, 3), np.uint8)
 
 def draw_circle(x,y):
         cv2.circle(img, ( x, y), radius, (255, 255, 255), -1)
+        cv2.circle(bg, ( x, y), radius, (255, 255, 255), -1)
         cv2.imshow('Eraser', img)
 
 def handleMouseEvent(event, x, y, flags, param):
@@ -42,4 +46,4 @@ cv2.setMouseCallback('Eraser', handleMouseEvent)
 cv2.imshow('Eraser', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-mask = cv2.imwrite('mask.jpg', img)
+mask = cv2.imwrite('mask.jpg', bg)
