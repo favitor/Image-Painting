@@ -20,11 +20,11 @@ cv2.namedWindow('Eraser')
 eraser = False 
 radius = 5
 height, width = img.shape[:2]
-bg = np.zeros((height, width, 3), np.uint8)
+bg_mask = np.zeros((height, width, 3), np.uint8)
 
 def draw_circle(x,y):
         cv2.circle(img, ( x, y), radius, (255, 255, 255), -1)
-        cv2.circle(bg, ( x, y), radius, (255, 255, 255), -1)
+        cv2.circle(bg_mask, ( x, y), radius, (255, 255, 255), -1)
         cv2.imshow('Eraser', img)
 
 def handleMouseEvent(event, x, y, flags, param):
@@ -33,6 +33,15 @@ def handleMouseEvent(event, x, y, flags, param):
               # update eraser position
             if eraser==True:
                   draw_circle(x, y)
+
+      elif (event==cv2.EVENT_MOUSEWHEEL):
+              # change eraser radius
+            if flags > 0:
+                radius +=   5
+            else:
+                    # prevent issues with < 0
+                if radius > 10:
+                    radius -=   5
 
       elif event == cv2.EVENT_LBUTTONUP:
               # stop erasing
@@ -46,4 +55,4 @@ cv2.setMouseCallback('Eraser', handleMouseEvent)
 cv2.imshow('Eraser', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-mask = cv2.imwrite('mask.jpg', bg)
+mask = cv2.imwrite('mask.jpg', bg_mask)
