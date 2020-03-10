@@ -12,3 +12,12 @@ A tool for Image Inpainting
 
 ## inpainting.py 
 `python inpainting.py --image .\path-to-image --mask .\path-to-mask`
+
+
+## Results
+
+# Initial Image
+
+# Mask
+
+# Final Image
