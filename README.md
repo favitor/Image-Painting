@@ -1,6 +1,14 @@
 # Image-Painting
 ---Workin on---
 
-A simple tool for Image Inpainting for end-users
+A tool for Image Inpainting
 
----Not Work Yet---
+# Usage
+## onefile.py
+'python onefile.py --image .\path-to-image'
+
+## eraser.py
+'python eraser.py --image .\path-to-image
+
+## inpainting.py 
+'python inpainting.py --image .\path-to-image --mask .\path-to-mask '
