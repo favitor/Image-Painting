@@ -2,6 +2,8 @@
 ---Workin on---
 
 A tool for Image Inpainting
+The `eraser.py`file is just for create the mask, erasing the original image
+
 
 # Usage
 ## onefile.py
@@ -16,8 +18,12 @@ A tool for Image Inpainting
 
 ## Results
 
-# Initial Image
+## Initial Image
 
-# Mask
+## Mask
 
-# Final Image
+## Final Image
+
+
+## License
+[GNU](<https://www.gnu.org/licenses/why-not-lgpl.html>)
