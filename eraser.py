@@ -15,8 +15,8 @@ parser.add_argument('-i', '--image',
 
 FLAGS, unparsed = parser.parse_known_args()
 
-#Or you can use de command below instead argparse
-#img = cv2.imread("base.jpg")
+#Or you can use this command below instead argparse
+#img = cv2.imread("image.jpg")
 img = cv2.imread(FLAGS.image)
 cv2.namedWindow('Eraser')
 eraser = False 
