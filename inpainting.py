@@ -20,7 +20,7 @@ parser.add_argument('-m', '--mask',
 
 FLAGS, unparsed = parser.parse_known_args()
 
-#Or you can use de command below instead argparse
+#Or you can use this command below instead argparse
 img = cv2.imread(FLAGS.image)
 #img = cv2.imread('image.jpg')
 mask = cv2.imread(FLAGS.mask, 0)
