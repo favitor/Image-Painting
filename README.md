@@ -19,6 +19,7 @@ The `eraser.py`file is just for create the mask, erasing the original image
 ## Results
 
 ## Initial Image
+![(./src/images/initialimage.jpg)]
 
 ## Mask
 
