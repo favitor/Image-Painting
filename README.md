@@ -19,13 +19,13 @@ The `eraser.py`file is just for create the mask, erasing the original image
 ## Results
 
 ## Initial Image
-![](https://github.com/favitor/Image-Painting/blob/master/images/initialimage.jpg)
+![Initial Image](https://github.com/favitor/Image-Painting/blob/master/images/initialimage.jpg)
 
 ## Mask
-![](https://github.com/favitor/Image-Painting/blob/master/images/mask.jpg)
+![Mask](https://github.com/favitor/Image-Painting/blob/master/images/mask.jpg)
 
 ## Final Image
-![]https://github.com/favitor/Image-Painting/blob/master/images/finalimage.jpg)
+![Final Image](https://github.com/favitor/Image-Painting/blob/master/images/finalimage.jpg)
 
 ## License
 [GNU](<https://www.gnu.org/licenses/gpl-3.0.html>)
