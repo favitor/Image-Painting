@@ -30,5 +30,6 @@ mask = cv2.imread(FLAGS.mask, 0)
 final_img = cv2.inpaint(img, mask, 3, cv2.INPAINT_TELEA)
 
 cv2.imshow('Final Image', final_img)
+cv2.imwrite('finalimage.jpg', final_img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

@@ -26,4 +26,4 @@ The `eraser.py`file is just for create the mask, erasing the original image
 
 
 ## License
-[GNU](<https://www.gnu.org/licenses/why-not-lgpl.html>)
+[GNU](<https://www.gnu.org/licenses/gpl-3.0.html>)

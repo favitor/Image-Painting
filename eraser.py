@@ -54,6 +54,6 @@ def handleMouseEvent(event, x, y, flags, param):
 
 cv2.setMouseCallback('Eraser', handleMouseEvent)
 cv2.imshow('Eraser', img)
+mask = cv2.imwrite('mask.jpg', bg_mask)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-mask = cv2.imwrite('mask.jpg', bg_mask)
